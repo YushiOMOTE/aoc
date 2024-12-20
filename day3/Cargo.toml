@@ -1,0 +1,8 @@
+[package]
+name = "aoc24-day3"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+aoc24-util = { version = "0.1.0", path = "../util" }
+regex = "1.11.1"

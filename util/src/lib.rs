@@ -6,7 +6,7 @@ pub fn fetch_input(day: usize) -> String {
     let url = format!("https://adventofcode.com/2024/day/{}/input", day);
 
     let session_token =
-        std::env::var("AOC_SESSION").expect("Missing AOC_SESSION environment variable");
+        std::env::var("AOC_SESSION").expect("missing AOC_SESSION environment variable");
 
     let mut headers = HeaderMap::new();
     headers.insert(

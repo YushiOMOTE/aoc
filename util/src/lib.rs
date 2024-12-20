@@ -51,3 +51,20 @@ pub fn parse_as_columns<T: FromStr>(input: &str) -> Vec<Vec<T>> {
 
     columns
 }
+
+pub fn parse_as_rows<T: FromStr>(input: &str) -> Vec<Vec<T>> {
+    // Initialize a vector to store rows
+    let mut rows: Vec<Vec<T>> = Vec::new();
+
+    // Process each line
+    for line in input.lines() {
+        // Split the line into tokens and parse them into integers
+        let row: Vec<T> = line
+            .split_whitespace()
+            .filter_map(|token| token.parse().ok())
+            .collect();
+        rows.push(row);
+    }
+
+    rows
+}

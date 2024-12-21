@@ -1,0 +1,8 @@
+[package]
+name = "aoc24-day13"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+aoc24-util = { version = "0.1.0", path = "../util" }
+itertools = "0.13.0"

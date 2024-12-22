@@ -1,6 +1,73 @@
 use reqwest::header::{HeaderMap, HeaderValue, COOKIE};
 use reqwest::blocking;
 use std::str::FromStr;
+use std::ops::{Add, Div, Rem, Sub};
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub struct Vec2d {
+    pub x: isize,
+    pub y: isize,
+}
+
+impl Vec2d {
+    pub fn new(x: isize, y: isize) -> Self {
+        Self { x, y }
+    }
+
+    pub fn from_tuple(t: (isize, isize)) -> Self {
+        Self::new(t.0, t.1)
+    }
+}
+
+impl From<(isize, isize)> for Vec2d {
+    fn from(t: (isize, isize)) -> Self {
+        Self::new(t.0, t.1)
+    }
+}
+
+impl Add for Vec2d {
+    type Output = Vec2d;
+
+    fn add(self, other: Vec2d) -> Vec2d {
+        Vec2d {
+            x: self.x + other.x,
+            y: self.y + other.y,
+        }
+    }
+}
+
+impl Sub for Vec2d {
+    type Output = Vec2d;
+
+    fn sub(self, other: Vec2d) -> Vec2d {
+        Vec2d {
+            x: self.x - other.x,
+            y: self.y - other.y,
+        }
+    }
+}
+
+impl Rem for Vec2d {
+    type Output = Vec2d;
+
+    fn rem(self, other: Vec2d) -> Vec2d {
+        Vec2d {
+            x: self.x % other.x,
+            y: self.y % other.y,
+        }
+    }
+}
+
+impl Div<isize> for Vec2d {
+    type Output = Vec2d;
+
+    fn div(self, other: isize) -> Vec2d {
+        Vec2d {
+            x: self.x / other,
+            y: self.y / other,
+        }
+    }
+}
 
 pub fn fetch_input(day: usize) -> String {
     let url = format!("https://adventofcode.com/2024/day/{}/input", day);
